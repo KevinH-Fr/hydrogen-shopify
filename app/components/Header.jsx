@@ -78,6 +78,19 @@ export function HeaderMenu({
           </NavLink>
         );
       })}
+
+      {/* Manually add Landing Page link */}
+      <NavLink
+        className="header-menu-item"
+        end
+        onClick={close}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to="/landingpage"
+      >
+        Landing Page
+      </NavLink>
+
     </nav>
   );
 }
@@ -204,6 +217,18 @@ const FALLBACK_HEADER_MENU = {
       url: '/pages/about',
       items: [],
     },
+
+      // Add LandingPage link here
+    {
+      id: 'gid://shopify/MenuItem/461609599033',
+      resourceId: null,
+      tags: [],
+      title: 'Landing Page',
+      type: 'HTTP',
+      url: '/landingpage', // Ensure this matches your route path
+      items: [],
+    },
+    
   ],
 };
 
