@@ -86,6 +86,18 @@ export function HeaderMenu({
         onClick={close}
         prefetch="intent"
         style={activeLinkStyle}
+        to="/test_landingpage"
+      >
+        Test Landing Page
+      </NavLink>
+
+      {/* Manually add Landing Page link */}
+      <NavLink
+        className="header-menu-item"
+        end
+        onClick={close}
+        prefetch="intent"
+        style={activeLinkStyle}
         to="/landingpage"
       >
         Landing Page
@@ -219,6 +231,17 @@ const FALLBACK_HEADER_MENU = {
     },
 
       // Add LandingPage link here
+    {
+      id: 'gid://shopify/MenuItem/461609599033',
+      resourceId: null,
+      tags: [],
+      title: 'Test Landing Page',
+      type: 'HTTP',
+      url: '/test_landingpage', // Ensure this matches your route path
+      items: [],
+    },
+
+    // Add LandingPage link here
     {
       id: 'gid://shopify/MenuItem/461609599033',
       resourceId: null,
