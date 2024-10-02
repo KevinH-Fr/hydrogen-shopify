@@ -27,7 +27,7 @@ const FirstBackground = () => {
     }, [controls]);
 
     // Scroll-based transformation for the text size
-    const scaleText = useTransform(scrollYProgress, [0, 1], [1, 2]); // Scale from 1 to 2 as you scroll down
+    const scaleText = useTransform(scrollYProgress, [0, 1], [1, 8]); // Scale from 1 to 8 as you scroll down
 
     // Scroll-based transformation for the text color
     const textColor = useTransform(
@@ -49,6 +49,7 @@ const FirstBackground = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                overflowX: 'hidden', // Prevent horizontal scrolling
             }}
         >
             {/* Animated Text */}
@@ -56,7 +57,8 @@ const FirstBackground = () => {
                 className="text-9xl font-bold"
                 style={{ 
                     color: textColor,   // Apply scroll-based color change
-                    scale: scaleText    // Use `style` to apply the scale transformation
+                    scale: scaleText,   // Use `style` to apply the scale transformation
+                    transformOrigin: 'center top', // Scale from the top-center to avoid overflow
                 }} 
                 initial={{ opacity: 0, y: -100 }} // Start with hidden and slightly above
                 animate={{

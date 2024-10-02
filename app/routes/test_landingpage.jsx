@@ -10,7 +10,7 @@ import BoxZoomIn from '../components/BoxZoomIn.jsx';
 
 import Animation3d from '../components/Animation3d.jsx'; 
 import Animation3dInteractions from "../components/Animation3dInteractions.jsx";
-import Animation3dScrollMotion from "../components/Animation3dScrollMotion.jsx";
+import Animation3dScrollMotion from "../components/OpeningAnimation/BoxAnimation.jsx";
 
 const TestLandingPage = () => {
   return (
