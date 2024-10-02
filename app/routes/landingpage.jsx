@@ -13,7 +13,7 @@ const LandingPage = () => {
 
       <BoxAnimation />
 
-      <div style={{ height: '20vh' }}></div>
+      <div style={{ height: '0vh' }}></div>
 
       <GateAnimation />
       <div style={{ height: '0vh' }}></div> 
