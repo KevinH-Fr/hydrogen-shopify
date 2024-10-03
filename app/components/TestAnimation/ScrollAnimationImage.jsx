@@ -1,7 +1,7 @@
 // src/ScrollAnimationImage.jsx
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import exampleImage from '../assets/images/boutique.png'; // Correct path to the image
+import exampleImage from '/assets/boutique.png'; // Correct path to the image
 
 const ScrollAnimationImage = () => {
   const ref = React.useRef(null); // Create a ref to attach to the motion div

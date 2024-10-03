@@ -17,9 +17,13 @@ const GateAnimation = ({ text }) => {
   // Translate the image upwards to focus on the bottom part while scaling
   const translateY = useTransform(scrollYProgress, [0, 1], [0, -600]);
 
-  // Smooth the scaling and translation animations
+  // Map scrollYProgress to an opacity value (1 to 0)
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
+  // Smooth the scaling, translation, and opacity animations
   const smoothScale = useSpring(scale, { damping: 20 });
   const smoothTranslateY = useSpring(translateY, { damping: 20 });
+  const smoothOpacity = useSpring(opacity, { damping: 20 });
 
   return (
     <div
@@ -34,6 +38,7 @@ const GateAnimation = ({ text }) => {
           style={{
             scale: smoothScale,  // Apply the smooth scaling to the image
             y: smoothTranslateY,  // Translate the image upwards while scaling
+            opacity: smoothOpacity,  // Change the opacity based on scroll
           }}
         />
       </div>
@@ -42,7 +47,3 @@ const GateAnimation = ({ text }) => {
 };
 
 export default GateAnimation;
-
-
-// reprndre avec image cover ou autre pour evier d'avoir une image plus large que la page,
-// éviter d'avoir la scrollbarre horizontale

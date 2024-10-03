@@ -3,6 +3,8 @@ import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import FirstBackground from '../components/OpeningAnimation/FirstBackground';
 import BoxAnimation from '../components/OpeningAnimation/BoxAnimation';
 import GateAnimation from '~/components/OpeningAnimation/GateAnimation';
+import TextAnimation from '~/components/OpeningAnimation/TextAnimation';
+import AdvanceTextAnimation from '~/components/OpeningAnimation/AdvanceTextAnimation';
 
 const LandingPage = () => {
 
@@ -16,7 +18,13 @@ const LandingPage = () => {
       <div style={{ height: '0vh' }}></div>
 
       <GateAnimation />
-      <div style={{ height: '0vh' }}></div> 
+      <div style={{ height: '10vh' }}></div> 
+
+      <TextAnimation />
+      <div style={{ height: '20vh' }}></div> 
+
+      <AdvanceTextAnimation />
+      <div style={{ height: '20vh' }}></div> 
 
     </div>
   )

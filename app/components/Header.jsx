@@ -103,6 +103,30 @@ export function HeaderMenu({
         Landing Page
       </NavLink>
 
+      {/* Manually add Landing Page link */}
+      <NavLink
+        className="header-menu-item"
+        end
+        onClick={close}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to="/entrance"
+      >
+        Entrance Animation
+      </NavLink>
+
+      {/* Manually add Landing Page link */}
+      <NavLink
+        className="header-menu-item"
+        end
+        onClick={close}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to="/entrance_animation"
+      >
+        Landing Page
+      </NavLink>
+
     </nav>
   );
 }
@@ -249,6 +273,17 @@ const FALLBACK_HEADER_MENU = {
       title: 'Landing Page',
       type: 'HTTP',
       url: '/landingpage', // Ensure this matches your route path
+      items: [],
+    },
+
+    // Add Entrance animation link here
+    {
+      id: 'gid://shopify/MenuItem/461609599033',
+      resourceId: null,
+      tags: [],
+      title: 'Landing Page',
+      type: 'HTTP',
+      url: '/entrance_animation', // Ensure this matches your route path
       items: [],
     },
     

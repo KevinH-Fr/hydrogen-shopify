@@ -13,7 +13,7 @@ const TextAnimation = () => {
 
   return (
     <motion.div style={{ x, opacity }} transition={{ duration: 0.5 }}>
-      <h1 className="text-4xl font-bold text-center">
+      <h1 className="text-4xl font-bold text-center overflow-x-hidden">
         This text moves to the right as you scroll!
       </h1>
     </motion.div>

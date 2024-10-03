@@ -1,15 +1,15 @@
 // React
 import { motion } from "framer-motion"
-import MotionBox1 from '../components/MotionBox1.jsx'; 
-import MotionBox2 from '../components/MotionBox2.jsx'; 
-import ScrollAnimationImage from '../components/ScrollAnimationImage.jsx'; 
+import MotionBox1 from '../components/TestAnimation/MotionBox1.jsx'; 
+import MotionBox2 from '../components/TestAnimation/MotionBox2.jsx'; 
+import ScrollAnimationImage from '../components/TestAnimation/ScrollAnimationImage.jsx'; 
 
-import TextAnimation from '../components/TextAnimation.jsx'; 
-import ScrollColorChangeBox from '../components/ScrollColorChangeBox.jsx'; 
-import BoxZoomIn from '../components/BoxZoomIn.jsx'; 
+import TextAnimation from '../components/TestAnimation/TextAnimation.jsx'; 
+import ScrollColorChangeBox from '../components/TestAnimation/ScrollColorChangeBox.jsx'; 
+import BoxZoomIn from '../components/TestAnimation/BoxZoomIn.jsx'; 
 
-import Animation3d from '../components/Animation3d.jsx'; 
-import Animation3dInteractions from "../components/Animation3dInteractions.jsx";
+import Animation3d from '../components/TestAnimation/Animation3d.jsx'; 
+import Animation3dInteractions from "../components/TestAnimation/Animation3dInteractions.jsx";
 import Animation3dScrollMotion from "../components/OpeningAnimation/BoxAnimation.jsx";
 
 const TestLandingPage = () => {
