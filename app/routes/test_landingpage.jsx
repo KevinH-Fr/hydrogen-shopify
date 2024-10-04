@@ -11,12 +11,15 @@ import BoxZoomIn from '../components/TestAnimation/BoxZoomIn.jsx';
 import Animation3d from '../components/TestAnimation/Animation3d.jsx'; 
 import Animation3dInteractions from "../components/TestAnimation/Animation3dInteractions.jsx";
 import Animation3dScrollMotion from "../components/OpeningAnimation/BoxAnimation.jsx";
+import Glasses3d from "~/components/TestAnimation/Glasses3d.jsx";
 
 const TestLandingPage = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-8">Welcome to My Landing Page</h1>
+      <h1 className="text-4xl font-bold mb-2">Welcome to My Landing Page</h1>
 
+      <Glasses3d />
+      
       <Animation3d /> 
       <p>animation3d</p>
 
@@ -36,7 +39,7 @@ const TestLandingPage = () => {
       <ScrollColorChangeBox />   
       
       <BoxZoomIn /> 
-      <div style={{ height: '50vh' }}></div>
+      <div style={{ height: '50vh' }}></div> 
 
 
     </div>

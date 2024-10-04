@@ -3,14 +3,16 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { motion } from 'framer-motion-3d';
 
-const EntranceAnimation = () => {
+const Glasses3d = () => {
   return (
-    <div className="h-screen">
-      <div className="glasses h-full w-full">
+    <div className="h-screen w-screen mt-80">
+      <div className="glasses h-[80%]">
         <Canvas>
           <OrbitControls enableZoom={false} enablePan={false} />
           <ambientLight intensity={2} />
           <directionalLight position={[2, 1, 1]} />
+          <directionalLight position={[4, 3, 1]} />
+
           <Glasses />
         </Canvas>
       </div>
@@ -31,10 +33,10 @@ function Glasses() {
       glassesRef.current.rotation.set(0, 0, 0); // Start with no rotation
 
       // Animate scale and rotation over 2 seconds
-      const duration = 2000; // Duration in milliseconds
+      const duration = 1500; // Duration in milliseconds
 
       // Set up the animation
-      const animationStart = performance.now();
+      const animationStart = 4000 + performance.now();
 
       const animate = (time) => {
         const elapsed = time - animationStart; // Time elapsed since start
@@ -64,4 +66,4 @@ function Glasses() {
   );
 }
 
-export default EntranceAnimation;
+export default Glasses3d;
