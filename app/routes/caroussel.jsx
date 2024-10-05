@@ -1,31 +1,41 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, delay } from "framer-motion";
 import { useState } from "react";
 
 // Define animation variants for the image and links
 const imageVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  hidden: { opacity: 0, y: 100 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 2,
+    transition: { duration: 1 } },
   exit: { opacity: 0, y: -50, transition: { duration: 0.5 } }, // Exit animation
 };
 
 const linkVariants = {
-  hidden: { y: 0 },
+  hidden: { y: 800, x: 0, opacity: 0}, // Start from above the center
   visible: (i) => ({
-    y: 100,
-    transition: { duration: 1 + i * 0.2 } // Stagger the links slightly
-  })
+    y: -10, //
+    x: (i - 1) * 100, // Spread out to the sides
+    opacity: 1,
+    transition: {
+      delay: 2.5,
+      duration: 1 + i * 0.2, // Staggered movement animation
+    },
+  }),
 };
 
 const Caroussel = () => {
   const [selectedContent, setSelectedContent] = useState({
     imageSrc: "/assets/cartier eyewear.webp",
-    text: "Default text for the initial image",
+    text: "Cartier finement bleutée",
+    sous_texte: "Essayez moi"
   });
 
   const links = [
-    { id: 1, label: "Link 1", image: "/assets/prada eyewear.webp", text: "Text for Link 1" },
-    { id: 2, label: "Link 2", image: "/assets/prada eyewear 2.webp", text: "Text for Link 2" },
-    { id: 3, label: "Link 3", image: "/assets/saint laurent eyewear.webp", text: "Text for Link 3" }
+    { id: 1, label: "Prada model1", image: "/assets/prada eyewear.webp", text: "Prada trop belles", sous_texte: "Emmenez moi" },
+    { id: 2, label: "Prada model2", image: "/assets/prada eyewear 2.webp", text: "Prada vraiment classes", sous_texte: "Achetez moi" },
+    { id: 3, label: "Saint Laurent", image: "/assets/saint laurent eyewear.webp", text: "Saint Laurent qui déchirent", sous_texte: "Trouvez moi" }
   ];
 
   return (
@@ -45,45 +55,72 @@ const Caroussel = () => {
             exit="exit"
           />
 
-          {/* Display the text associated with the selected image */}
-          <motion.div
-            className="text-center text-lg mt-4"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+
+         {/* Display text */}
+
+         <motion.div
+            className="text-center text-4xl absolute top-40 left-1/2 transform -translate-x-1/2 text-gray-800 flex items-center justify-center"
+            initial={{ opacity: 0, x: 500 }}  // Start off-screen to the left
+            animate={{ opacity: 1, x: 0 }}      // Move to the center position
+            exit={{ opacity: 0, x: 100 }}        // Optionally move out to the right when exiting
+            transition={{ 
+              delay: 0.5,
+              type: "spring", 
+              damping: 30, 
+              duration: 0.8}}          
           >
             {selectedContent.text}
           </motion.div>
+
+
+          {/* Display sous texte */}
+
+          <motion.div
+            className="text-center text-2xl absolute top-100 left-1/2 transform -translate-x-1/2 text-blue-800 flex items-center justify-center"
+            initial={{ opacity: 0, x: -500 }}  // Start off-screen to the left
+            animate={{ opacity: 1, x: 0 }}      // Move to the center position
+            exit={{ opacity: 0, x: 100 }}        // Optionally move out to the right when exiting
+            transition={{ 
+              delay: 1.5,
+              type: "spring", 
+              damping: 30, 
+              duration: 1.2}}          
+          >
+            {selectedContent.sous_texte}
+          </motion.div>
+
+
           
         </AnimatePresence>
       </div>
 
 
-
-      {/* Second animation: Display the links */}
-      <div className="flex flex-row justify-center mt-5 space-x-4">
+      {/* Second animation: Display the buttons */}
+      <div className="flex flex-row justify-center mt-5">
         {links.map((link, i) => (
-          <motion.a
+          <motion.button
             key={link.id}
-            href="#"
-            className="bg-blue-500 text-white p-2 rounded"
+            className="bg-gray-800 text-white p-2 text-2xl rounded cursor-pointer mx-4"
             variants={linkVariants}
             initial="hidden"
             animate="visible"
             custom={i} // Custom value for staggered animation
             onClick={(e) => {
               e.preventDefault();
-              // Set new image and associated text when a link is clicked
+              // Set new image and associated text when a button is clicked
               setSelectedContent({
                 imageSrc: link.image,
                 text: link.text,
+                sous_texte: link.sous_texte,
               });
             }}
           >
             {link.label}
-          </motion.a>
+          </motion.button>
         ))}
       </div>
+
+
     </div>
   );
 };
