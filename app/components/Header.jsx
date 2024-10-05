@@ -127,6 +127,18 @@ export function HeaderMenu({
         Landing Page
       </NavLink>
 
+      {/* Manually add caroussel */}
+      <NavLink
+        className="header-menu-item"
+        end
+        onClick={close}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to="/caroussel"
+      >
+        Caroussel
+      </NavLink>
+
     </nav>
   );
 }
@@ -287,6 +299,16 @@ const FALLBACK_HEADER_MENU = {
       items: [],
     },
     
+        // Add caroussel link here
+        {
+          id: 'gid://shopify/MenuItem/461609599033',
+          resourceId: null,
+          tags: [],
+          title: 'caroussel',
+          type: 'HTTP',
+          url: '/caroussel', // Ensure this matches your route path
+          items: [],
+        },
   ],
 };
 
