@@ -13,9 +13,9 @@ const imageVariants = {
 };
 
 const linkVariants = {
-  hidden: { y: 800, x: 0, opacity: 0}, // Start from above the center
+  hidden: { y: 1200, x: 0, opacity: 0}, // Start from above the center
   visible: (i) => ({
-    y: -10, //
+    y: 600, //
     x: (i - 1) * 100, // Spread out to the sides
     opacity: 1,
     transition: {
@@ -23,32 +23,47 @@ const linkVariants = {
       duration: 1 + i * 0.2, // Staggered movement animation
     },
   }),
+  
 };
 
 const Caroussel = () => {
   const [selectedContent, setSelectedContent] = useState({
     imageSrc: "/assets/cartier eyewear.webp",
     text: "Cartier finement bleutée",
-    sous_texte: "Essayez moi"
+    sous_texte: "Essayez moi avec un texte un peu plus long pour en savoir plus sur le produit"
   });
 
   const links = [
-    { id: 1, label: "Prada model1", image: "/assets/prada eyewear.webp", text: "Prada trop belles", sous_texte: "Emmenez moi" },
-    { id: 2, label: "Prada model2", image: "/assets/prada eyewear 2.webp", text: "Prada vraiment classes", sous_texte: "Achetez moi" },
-    { id: 3, label: "Saint Laurent", image: "/assets/saint laurent eyewear.webp", text: "Saint Laurent qui déchirent", sous_texte: "Trouvez moi" }
+    { id: 1, 
+      label: "Prada model1", 
+      image: "/assets/prada eyewear.webp", 
+      text: "Prada trop belles", 
+      sous_texte: "Emmenez moi où vous voulez avec vous pour en savoir plus sur le produit" },
+
+    { id: 2, 
+      label: "Prada model2", 
+      image: "/assets/prada eyewear 2.webp", 
+      text: "Prada vraiment classes", 
+      sous_texte: "Achetez moi pour en savoir plus sur le produit pour en savoir plus sur le produit" },
+
+    { id: 3, 
+      label: "Saint Laurent", 
+      image: "/assets/saint laurent eyewear.webp", 
+      text: "Saint Laurent qui déchirent", 
+      sous_texte: "Trouvez moi devant ou dérrière vous pour en savoir plus sur le produit" }
   ];
 
   return (
     <div className="">
       
       {/* First animation: Display the image */}
-      <div className="p-10">
+      <div className="">
         <AnimatePresence mode='wait'>
           <motion.img
             key={selectedContent.imageSrc} // Key prop forces re-render on image change
             src={selectedContent.imageSrc}
             alt="Displayed Image"
-            className="object-contain h-[50vh] w-full p-1"
+            className="w-[30vw] p-10 absolute right-[20vw] top-[20vh]"  // Positioned on the right and top of the screen
             variants={imageVariants}
             initial="hidden"
             animate="visible"
@@ -59,7 +74,7 @@ const Caroussel = () => {
          {/* Display text */}
 
          <motion.div
-            className="text-center text-4xl absolute top-40 left-1/2 transform -translate-x-1/2 text-gray-800 flex items-center justify-center"
+            className="title-custom-style absolute top-[15vh] left-6 w-[30vw]"
             initial={{ opacity: 0, x: 500 }}  // Start off-screen to the left
             animate={{ opacity: 1, x: 0 }}      // Move to the center position
             exit={{ opacity: 0, x: 100 }}        // Optionally move out to the right when exiting
@@ -76,20 +91,18 @@ const Caroussel = () => {
           {/* Display sous texte */}
 
           <motion.div
-            className="text-center text-2xl absolute top-100 left-1/2 transform -translate-x-1/2 text-blue-800 flex items-center justify-center"
-            initial={{ opacity: 0, x: -500 }}  // Start off-screen to the left
-            animate={{ opacity: 1, x: 0 }}      // Move to the center position
+            className="text-2xl absolute top-[40vh] left-6 text-gray-700 w-[30vw] font-bold"
+            initial={{ opacity: 0 }}  // Start off-screen to the left
+            animate={{ opacity: 1 }}      // Move to the center position
             exit={{ opacity: 0, x: 100 }}        // Optionally move out to the right when exiting
             transition={{ 
-              delay: 1.5,
+              delay: 1.7,
               type: "spring", 
               damping: 30, 
-              duration: 1.2}}          
+              duration: 1}}          
           >
             {selectedContent.sous_texte}
           </motion.div>
-
-
           
         </AnimatePresence>
       </div>
@@ -100,10 +113,12 @@ const Caroussel = () => {
         {links.map((link, i) => (
           <motion.button
             key={link.id}
-            className="bg-gray-800 text-white p-2 text-2xl rounded cursor-pointer mx-4"
+            className="bg-gray-800 text-white p-3 px-10 text-2xl rounded-4xl cursor-pointer mx-4"
             variants={linkVariants}
             initial="hidden"
             animate="visible"
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 1.1 }}
             custom={i} // Custom value for staggered animation
             onClick={(e) => {
               e.preventDefault();
@@ -127,13 +142,3 @@ const Caroussel = () => {
 
 export default Caroussel;
 
-
-  {/* 
-
-  ok -   faire deux animations tres basiques en cascade proprement
-    puis faire animation de base à l'ouverture :
-      premiere image apparait
-      btn vont vers le bas
-      image animation au click
-      remplacer image par objets 3d
-  */}

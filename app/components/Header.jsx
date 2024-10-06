@@ -139,6 +139,17 @@ export function HeaderMenu({
         Caroussel
       </NavLink>
 
+      {/* Manually add caroussel */}
+      <NavLink
+        className="header-menu-item"
+        end
+        onClick={close}
+        prefetch="intent"
+        style={activeLinkStyle}
+        to="/caroussel3d"
+      >
+        Caroussel3d
+      </NavLink>
     </nav>
   );
 }
@@ -309,6 +320,18 @@ const FALLBACK_HEADER_MENU = {
           url: '/caroussel', // Ensure this matches your route path
           items: [],
         },
+
+        // Add caroussel link here
+        {
+          id: 'gid://shopify/MenuItem/461609599033',
+          resourceId: null,
+          tags: [],
+          title: 'caroussel3d',
+          type: 'HTTP',
+          url: '/caroussel3d', // Ensure this matches your route path
+          items: [],
+        },
+
   ],
 };
 
